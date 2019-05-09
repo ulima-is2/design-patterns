@@ -23,3 +23,4 @@
 
 # others
 - https://app.codesignal.com/tournaments
+  - https://app.codesignal.com/tournaments/4wpKkAmDrDyTB5ZP6
