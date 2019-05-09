@@ -1,6 +1,8 @@
 # Review
 - design patterns
-![table](http://url/to/img.png)
+
+![table](https://github.com/ulima-is2/design-patterns-practice/blob/master/material/img/periodic_table_is2.png)
+
   - creational
     - 01 Factory method
     - a prototype
@@ -18,3 +20,6 @@
 # References
 - http://vincehuston.org
 - http://vincehuston.org/dp/real_demos.html
+
+# others
+- https://app.codesignal.com/tournaments
