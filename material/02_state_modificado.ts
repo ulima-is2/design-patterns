@@ -1,57 +1,62 @@
-class Persona
+class PersonaState
 {
     nombre : string
-    estadoCivil : EstadoCivil
+    EstadoCivilState : EstadoCivilState
     constructor(nombre : string)
     {
         this.nombre = nombre
-        this.estadoCivil = new EstadoSoltero(this) // Estado Inicial
+        this.EstadoCivilState = new EstadoSoltero(this) // Estado Inicial
     }
 
     casar()
     {
-        this.estadoCivil.casar()
+        this.EstadoCivilState.casar()
     }
 
     enviudar()
     {
-        this.estadoCivil.enviudar()
+        this.EstadoCivilState.enviudar()
     }
 
     divorciar()
     {
-        this.estadoCivil.divorciar()
+        this.EstadoCivilState.divorciar()
     }
     morir()
     {
-        this.estadoCivil.morir()
+        this.EstadoCivilState.morir()
+    }
+    resucitar()
+    {
+        this.EstadoCivilState.resucitar()
     }
 
 }
 
-interface EstadoCivil
+interface EstadoCivilState
 {
     casar() : void
     divorciar() : void
     morir() : void
     enviudar() : void
+    resucitar() : void
 }
 
-class EstadoSoltero implements EstadoCivil
+class EstadoSoltero implements EstadoCivilState
 {
-    persona : Persona
-    constructor(persona : Persona)
+    PersonaState : PersonaState
+    constructor(PersonaState : PersonaState)
     {
-        this.persona = persona
+        this.PersonaState = PersonaState
     }
     casar() {
-        this.persona.estadoCivil = new EstadoCasado(this.persona)
+        this.PersonaState.EstadoCivilState = new EstadoCasado(this.PersonaState)
     }
 
     divorciar() {}
 
     morir() {
-        this.persona.estadoCivil = new EstadoFallecido(this.persona)
+        this.PersonaState.EstadoCivilState = new EstadoFallecido(this.PersonaState)
     }
 
     enviudar() {}
@@ -59,104 +64,132 @@ class EstadoSoltero implements EstadoCivil
     toString() {
         return "ESTADO SOLTERO"
     }
+    resucitar(){}
 }
 
-class EstadoCasado implements EstadoCivil
+class EstadoCasado implements EstadoCivilState
 {
-    persona : Persona
-    constructor(persona : Persona)
+    PersonaState : PersonaState
+    constructor(PersonaState : PersonaState)
     {
-        this.persona = persona
+        this.PersonaState = PersonaState
     }
     casar() {}
 
     divorciar() {
-        this.persona.estadoCivil = new EstadoDivorciado(this.persona)
+        this.PersonaState.EstadoCivilState = new EstadoDivorciado(this.PersonaState)
     }
     morir() {
-        this.persona.estadoCivil = new EstadoFallecido(this.persona)
+        this.PersonaState.EstadoCivilState = new EstadoFallecido(this.PersonaState)
     }
     enviudar() {
-        this.persona.estadoCivil = new EstadoViudo(this.persona)
+        this.PersonaState.EstadoCivilState = new EstadoViudo(this.PersonaState)
     }
+
+    resucitar(){}
 
     toString() {
         return "ESTADO CASADO"
     }
 }
 
-class EstadoViudo implements EstadoCivil
+class EstadoViudo implements EstadoCivilState
 {
-    persona : Persona
-    constructor(persona : Persona)
+    PersonaState : PersonaState
+    constructor(PersonaState : PersonaState)
     {
-        this.persona = persona
+        this.PersonaState = PersonaState
     }
     casar() {
-        this.persona.estadoCivil = new EstadoCasado(this.persona)
+        this.PersonaState.EstadoCivilState = new EstadoCasado(this.PersonaState)
     }
 
     divorciar() {}
 
     morir() {
-        this.persona.estadoCivil = new EstadoFallecido(this.persona)
+        this.PersonaState.EstadoCivilState = new EstadoFallecido(this.PersonaState)
     }
 
     enviudar() {}
+
+    resucitar(){}
 
     toString() {
         return "ESTADO VIUDO"
     }
 }
 
-class EstadoDivorciado implements EstadoCivil
+class EstadoDivorciado implements EstadoCivilState
 {
-    persona : Persona
-    constructor(persona : Persona)
+    PersonaState : PersonaState
+    constructor(PersonaState : PersonaState)
     {
-        this.persona = persona
+        this.PersonaState = PersonaState
     }
     casar() {
-        this.persona.estadoCivil = new EstadoCasado(this.persona)
+        this.PersonaState.EstadoCivilState = new EstadoCasado(this.PersonaState)
     }    
 
     divorciar() {}
 
     morir() {
-        this.persona.estadoCivil = new EstadoFallecido(this.persona)
+        this.PersonaState.EstadoCivilState = new EstadoFallecido(this.PersonaState)
     }
 
     enviudar() {}
+
+    resucitar(){
+        
+    }
 
     toString() {
         return "ESTADO DIVORCIADO"
     }
 }
 
-class EstadoFallecido implements EstadoCivil
+class EstadoFallecido implements EstadoCivilState
 {
-    persona : Persona
-    constructor(persona : Persona)
+    PersonaState : PersonaState
+    constructor(PersonaState : PersonaState)
     {
-        this.persona = persona
+        this.PersonaState = PersonaState
     }
     casar() {}    
     divorciar() {}
     morir() {}
     enviudar() {}
-
+    resucitar(){}
     toString() {
         return "ESTADO FALLECIDO"
     }
 }
+class EstadoResucitado implements EstadoCivilState
+{
+    PersonaState : PersonaState
+    constructor(PersonaState : PersonaState)
+    {
+        this.PersonaState = PersonaState
+    }
+    casar() {}    
+    divorciar() {}
+    morir() {}
+    enviudar() {}
+    resucitar(){
+        this.PersonaState.EstadoCivilState = new EstadoResucitado(this.PersonaState)
+    }
+    toString() {
+        return "ESTADO RESUCITADO"
+    }
+}
 
 let main = () => {
-    let juanita : Persona = new Persona("Juanita")
+    let juanita : PersonaState = new PersonaState("Juanita")
     juanita.casar()
     juanita.enviudar()
     juanita.divorciar()
+    juanita.resucitar()
 
-    console.log(`El estado civil es: ${juanita.estadoCivil}`)
+    console.log(`El estado civil es: ${juanita.EstadoCivilState}`)
 }
 
 main()

@@ -8,11 +8,11 @@ class Reclamo
     }
 }
 
-abstract class Empleado
+abstract class Empleado0
 {
-    sucessor : Empleado | null | undefined
+    sucessor : Empleado0 | null | undefined
     
-    addSucessor(empleado : Empleado)
+    addSucessor(empleado : Empleado0)
     {
         this.sucessor = empleado
     }
@@ -22,7 +22,7 @@ abstract class Empleado
 }
 
 // Nivel 1
-class Mozo extends Empleado
+class Mozo extends Empleado0
 {
     atenderReclamo(reclamo: Reclamo): void {
         // reclamo < 100 -> mozo lo atiende
@@ -41,7 +41,7 @@ class Mozo extends Empleado
 }
 
 // Nivel 2
-class Encargado extends Empleado
+class Encargado extends Empleado0
 {
     atenderReclamo(reclamo: Reclamo): void {
         // reclamo > 100 y < 300 -> Encargado
@@ -60,7 +60,7 @@ class Encargado extends Empleado
 }
 
 // Nivel 3
-class Administrador extends Empleado
+class Administrador extends Empleado0
 {
     atenderReclamo(reclamo: Reclamo): void {
         console.log("El administrador lo atiende");

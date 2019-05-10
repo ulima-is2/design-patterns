@@ -1,4 +1,4 @@
-class Empleado
+export class Empleado
 {
     nombre : string
     constructor(nom : string)
@@ -7,17 +7,17 @@ class Empleado
     }
 }
 
-class Cocinero extends Empleado
+export class Cocinero extends Empleado
 {
 
 }
 
-class Jalador extends Empleado
+export class Jalador extends Empleado
 {
 
 }
 
-class Cliente
+export class Cliente
 {
     realizarPedido(pedido : string, mozo : Mozo)
     {
@@ -25,7 +25,7 @@ class Cliente
     }
 }
 
-class Mozo extends Empleado
+export class Mozo extends Empleado
 {
     escribirPedido(pedido : string)
     {

@@ -1,4 +1,4 @@
-import {Empleado, Cocinero, Mozo, Jalador} from './principios';
+import {Empleado, Cocinero, Mozo, Jalador} from './00_principios';
 
 // Objetivo: Crear empleados
 class FactoryEmpleado
@@ -31,7 +31,7 @@ let main = () => {
         let emp : Empleado | null = factory.getEmpleado(tipo, "Panchito")
         if (emp != null)
         {
-            emp.saludar()
+            //emp.saludar()
         }
     }
     

@@ -18,7 +18,7 @@
     - e composite
 
 # References
-- http://vincehuston.org
+- http://vincehuston.org/dp
 - http://vincehuston.org/dp/real_demos.html
 
 # others
