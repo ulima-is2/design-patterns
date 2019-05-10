@@ -15,6 +15,12 @@ class EjecutorNivel1 extends EjecutorNivel
         if (proceso.prioridad == 3 && proceso.consumo > 100)
         {
             console.log(`EjecutorNivel1 matará proceso ${proceso.nombre}`)
+        }else{
+            if (this.sucesor != null && this.sucesor != undefined)
+            {
+                // Delego la atencion al sucesor
+                this.sucesor.matar(proceso)
+            }            
         }
     }
 
@@ -26,6 +32,12 @@ class EjecutorNivel2 extends EjecutorNivel
         if (proceso.prioridad == 2 && proceso.consumo > 100)
         {
             console.log(`EjecutorNivel2 matará proceso ${proceso.nombre}`)
+        }else{
+            if (this.sucesor != null && this.sucesor != undefined)
+            {
+                // Delego la atencion al sucesor
+                this.sucesor.matar(proceso)
+            }            
         }
     }
 
@@ -36,6 +48,12 @@ class EjecutorNivel3 extends EjecutorNivel
         if (proceso.prioridad == 1 && proceso.consumo > 100)
         {
             console.log(`EjecutorNivel3 matará proceso ${proceso.nombre}`)
+        }else{
+            if (this.sucesor != null && this.sucesor != undefined)
+            {
+                // Delego la atencion al sucesor
+                this.sucesor.matar(proceso)
+            }            
         }
     }
 }
@@ -50,7 +68,7 @@ let main2 = () =>
     en2.addSucesor(en3)
 
     let proceso : Proceso = {
-        prioridad : 3,
+        prioridad : 1,
         nombre : "Proceso de Prueba",
         consumo : 101
     }
